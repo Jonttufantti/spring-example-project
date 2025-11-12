@@ -16,7 +16,7 @@ public class DefaultController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String press(Model model) {
-        model.addAttribute("presss", "Success");
+        model.addAttribute("press", "Success");
         return "index";
     }
 }
