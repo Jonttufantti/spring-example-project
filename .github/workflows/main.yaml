@@ -30,3 +30,8 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/spring-example-project:latest
             ${{ secrets.DOCKER_USERNAME }}/spring-example-project:${{ github.sha }}
+
+      - name: Trigger Render deploy
+        run: |
+          IMGURL=$(echo -n "docker.io/${{ secrets.DOCKER_USERNAME }}/spring-example-project:latest" | jq -s -R -r @uri)
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}&imgURL=$IMGURL"
