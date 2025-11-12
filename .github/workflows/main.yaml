@@ -29,7 +29,6 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/spring-example-project:latest
-            ${{ secrets.DOCKER_USERNAME }}/spring-example-project:${{ github.sha }}
 
       - name: Trigger Render deploy
         run: |
