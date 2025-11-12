@@ -1,0 +1,16 @@
+services:
+  watchtower-spring:
+    image: beatkind/watchtower:latest
+    environment:
+      WATCHTOWER_POLL_INTERVAL: "60"
+      WATCHTOWER_CLEANUP: "true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    container_name: watchtower
+
+  spring-example-project:
+    image: joonanzo/spring-example-project:latest
+    ports:
+      - "3000:8080"
+    container_name: spring-example-project
+    build: .
